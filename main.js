@@ -7,36 +7,14 @@ let retiro;
 let servicios;
 let pagos;
 let confirmacion;
-//Pido al usuario sus datos para guardarlos en el objeto usuario1
-let nombre;
-do {
-    nombre = prompt("Ingresá tu nombre");
-} while (!isNaN(nombre) || nombre == " ");
-let apellido;
-do {
-    apellido = prompt("Ingresá tu apellido");
-} while (!isNaN(apellido || apellido == " "));
-let mail;
-do {
-    mail = prompt("Ingresá tu E-mail");
-} while (!isNaN(mail || mail == " "));
-let dni;
-do {
-    dni = prompt("Ingresá tu DNI");
-} while (isNaN(dni || dni == ""));
-let ciudad;
-do {
-    ciudad = prompt("Ingresá tu ciudad");
-} while (!isNaN(ciudad || ciudad == " "));
-let provincia;
-do {
-    provincia = prompt("Ingresá tu provincia");
-} while (!isNaN(provincia || provincia == " "));
+let nombreUsuario;
+let apellidoUsuario;
+let mailUsuario;
+let dniUsuario;
+let ciudadUsuario;
+let provinciaUsuario;
 
-//Creo un array vacío para luego llenarlo con los usuarios creados
-let contacto = [];
-
-//Declaré la calse Usuario, para luego crear objetos "usuario"
+// Declaré la clase Usuario, para luego crear objetos "usuario"
 class Usuario {
     constructor(nombre, apellido, email, dni, ciudad, provincia) {
         this.nombre = nombre;
@@ -47,11 +25,45 @@ class Usuario {
         this.provincia = provincia;
     }
 }
-//Creé el objeto usuario1 con los datos pedidos al usuario del programa
-const usuario1 = new Usuario(nombre, apellido, mail, dni, ciudad, provincia);
+// Cree los usuarios del programa
+const usuario1 = new Usuario("Pedro", "Rodriguez", "p.rodriguez@gmail.com", 23456789, "Capital Federal", "Buenos Aires");
+const usuario2 = new Usuario("Laura", "Vila", "laura1996@gmail.com", 23189047, "Rosario", "Santa Fe");
+const usuario3 = new Usuario("Martin", "Paez", "mpaez.17@gmail.com", 18763408, "Rosario", "Santa Fe");
+// El usuario elije crear nuevo usuario para poder avanzar
+let nuevousuario;
+do {
+    nuevousuario = parseInt(prompt(`Elije un usuario \n 1) ${usuario1.nombre} \n 2) ${usuario2.nombre} \n 3) ${usuario3.nombre}\n 4) Crear nuevo usuario`));
+} while (
+    nuevousuario != 4);
+// Creación del nuevo usuario
+if (nuevousuario == 4) {
+    do {
+        nombreUsuario = prompt("Ingresá tu nombre");
+    } while (!isNaN(nombreUsuario) || nombreUsuario == " ");
+    do {
+        apellidoUsuario = prompt("Ingresá tu apellido");
+    } while (!isNaN(apellidoUsuario || apellidoUsuario == " "));
+    do {
+        mailUsuario = prompt("Ingresá tu E-mail");
+    } while (!isNaN(mailUsuario || mailUsuario == " "));
+    do {
+        dniUsuario = prompt("Ingresá tu DNI");
+    } while (isNaN(dniUsuario || dniUsuario == ""));
+    do {
+        ciudadUsuario = prompt("Ingresá tu ciudad");
+    } while (!isNaN(ciudadUsuario || ciudadUsuario == " "));
+    do {
+        provinciaUsuario = prompt("Ingresá tu provincia");
+    } while (!isNaN(provinciaUsuario || provinciaUsuario == " "));
+}
+// Creación del nuevo usuario usando la información dada por el usuario del programa
+const usuario4 = new Usuario(nombreUsuario, apellidoUsuario, mailUsuario, dniUsuario, ciudadUsuario, provinciaUsuario);
 
-//Con el método push agregue al usuario1 al array contacto
-contacto.push(usuario1);
+// Creo un array con los usuarios
+let contacto = [usuario1, usuario2, usuario3];
+
+// Con el método push agregue al usuario4 al array contacto
+contacto.push(usuario4);
 
 //Creé la función "pago" para reutilizar su estructura cada vez que el usuario quiera pagar un servicio
 const pago = () => {
@@ -118,10 +130,12 @@ while (continua) {
         }
     } else if (opcion === 5) {
         alert("Confirme su información de contacto para comunicarnos con usted");
-
-        alert(confirmacion);
+        for (let i in contacto) {
+            confirmacion = `Nombre: ${i.nombre} \n Apellido: ${i.apellido} \n E-mail: ${i.mail} \n DNI: ${i.dni} \n Ciudad: ${i.ciudad} \n Provincia: ${i.provincia}`
+        }
+        console.log(confirmacion);
     } else if (opcion === 6) {
-        alert(`Gracias ${usuario1.nombre} por usar su billetera virtual`);
+        alert(`Gracias ${usuario4.nombre} por usar su billetera virtual`);
         continua = false;
     } else {
         alert("Opción inválida");
