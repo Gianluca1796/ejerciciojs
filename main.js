@@ -133,7 +133,7 @@ while (continua) {
         for (let i in contacto) {
             confirmacion = `Nombre: ${i.nombre} \n Apellido: ${i.apellido} \n E-mail: ${i.mail} \n DNI: ${i.dni} \n Ciudad: ${i.ciudad} \n Provincia: ${i.provincia}`
         }
-        console.log(confirmacion);
+        alert(confirmacion);
     } else if (opcion === 6) {
         alert(`Gracias ${usuario4.nombre} por usar su billetera virtual`);
         continua = false;
