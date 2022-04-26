@@ -86,7 +86,7 @@ const pago = () => {
 while (continua) {
     opcion = parseInt(
         prompt(
-            "INGRESE UNA OPCIÓN VÁLIDA\n 1) Ingresar dinero en la cuenta \n 2) Retirar dinero de la cuenta \n 3) Mostrar dinero en la cuenta \n 4) Pagar servicios \n 5) Contacto 6) Salir"
+            "INGRESE UNA OPCIÓN VÁLIDA\n 1) Ingresar dinero en la cuenta \n 2) Retirar dinero de la cuenta \n 3) Mostrar dinero en la cuenta \n 4) Pagar servicios \n 5) Contacto \n 6) Salir"
         )
     );
     if (opcion === 1) {
@@ -130,9 +130,7 @@ while (continua) {
         }
     } else if (opcion === 5) {
         alert("Confirme su información de contacto para comunicarnos con usted");
-        for (let i in contacto) {
-            confirmacion = `Nombre: ${i.nombre} \n Apellido: ${i.apellido} \n E-mail: ${i.mail} \n DNI: ${i.dni} \n Ciudad: ${i.ciudad} \n Provincia: ${i.provincia}`
-        }
+            confirmacion = `Nombre: ${contacto[3].nombre} \n Apellido: ${contacto[3].apellido} \n E-mail: ${contacto[3].email} \n DNI: ${contacto[3].dni} \n Ciudad: ${contacto[3].ciudad} \n Provincia: ${contacto[3].provincia}`
         alert(confirmacion);
     } else if (opcion === 6) {
         alert(`Gracias ${usuario4.nombre} por usar su billetera virtual`);
